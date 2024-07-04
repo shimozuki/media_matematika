@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:media_pembelajaran/secreen/materi_screen.dart';
+import 'package:media_pembelajaran/secreen/profile_screen.dart';
 
 class Matpel {
   String nama;
@@ -15,12 +17,12 @@ class Hafalan {
   Hafalan(this.matpel, this.nilai);
 }
 
-class HomeScreen extends StatefulWidget {
+class Halamanutama extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HalamanutamaState createState() => _HalamanutamaState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HalamanutamaState extends State<Halamanutama> {
   final List<Hafalan> hafalanList = [
     Hafalan(Matpel('Teori Dasar Aljabar'), '40/48'),
     Hafalan(Matpel('Perbandingan'), '6/24'),
@@ -33,6 +35,21 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _selectedIndex = index;
     });
+    if (_selectedIndex == 1) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MateriScreen(),
+        ),
+      );
+    } else if (_selectedIndex == 4) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ProfileScreen(),
+        ),
+      );
+    }
   }
 
   @override
@@ -130,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          'Hafalan',
+                          'Learning Plan',
                           style: GoogleFonts.poppins(
                             fontWeight: FontWeight.w500,
                             fontSize: 18.0,
